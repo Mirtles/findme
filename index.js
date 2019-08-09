@@ -7,7 +7,7 @@ const images = [
         name: "brontosaur",
         src: "images/brontosaur.png",
         height: "30"
-    },{
+    }, {
         name: "stegosaur",
         src: "images/stegosaurus.png",
         height: "14"
@@ -33,18 +33,34 @@ function getRandomInt(min, max) {
     return randomInt
 }
 
+const foundItems = []
+
+function addToFoundItems(image) {
+    console.log(image)
+    console.log(foundItems.length)
+
+    if(foundItems.length === 0) {
+        foundItems.push(image)
+        return;
+    }
+    for (let i = 0; i < foundItems.length; i++) {
+        if (foundItems[i].name !== image.name) {
+            foundItems.push(image);
+        }
+    }
+    return foundItems;
+}
+
 for (let i = 0; i < images.length; i++) {
-    let img = document.createElement("img");
-    let currentImg = images[i]
+    const img = document.createElement("img");
+    const currentImg = images[i];
+    const height = currentImg.height;
     img.alt = currentImg.name;
     img.src = currentImg.src;
-    const height = currentImg.height;
-    const fromBottom = getRandomInt(0,30);
-    const fromLeft = getRandomInt(0,60);
+    const fromLeft = getRandomInt(0, 60);
+    const fromBottom = getRandomInt(0, 30);
     img.style = `height:${height}vh; position:absolute; left:${fromLeft}rem; bottom:${fromBottom}rem`
-  
+    img.addEventListener('click', function () { addToFoundItems(currentImg); console.log(currentImg) });
     main.appendChild(img)
-
-    // console.log(`${fromBottom} rem`)
-    // console.log(img);
 }
+
