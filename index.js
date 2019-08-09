@@ -35,20 +35,22 @@ function getRandomInt(min, max) {
 
 const foundItems = []
 
+//fixme!
 function addToFoundItems(image) {
-    console.log(image)
-    console.log(foundItems.length)
-
-    if(foundItems.length === 0) {
+    if (foundItems.length === 0) {
         foundItems.push(image)
+        displayInFooter(foundItems)
         return;
     }
     for (let i = 0; i < foundItems.length; i++) {
-        if (foundItems[i].name !== image.name) {
-            foundItems.push(image);
+        if (foundItems[i].name === image.name) {
+            displayInFooter(foundItems)
+            return;
         }
     }
-    return foundItems;
+    foundItems.push(image);
+    displayInFooter(foundItems)
+    return
 }
 
 for (let i = 0; i < images.length; i++) {
@@ -60,7 +62,26 @@ for (let i = 0; i < images.length; i++) {
     const fromLeft = getRandomInt(0, 60);
     const fromBottom = getRandomInt(0, 30);
     img.style = `height:${height}vh; position:absolute; left:${fromLeft}rem; bottom:${fromBottom}rem`
-    img.addEventListener('click', function () { addToFoundItems(currentImg); console.log(currentImg) });
+    img.addEventListener('click', function () { addToFoundItems(currentImg) });
     main.appendChild(img)
 }
+
+const foundItemsSection = document.getElementById("foundItems");
+
+function displayInFooter(found) {
+    foundItemsSection.innerHTML = '';
+    for (let i = 0; i < found.length; i++) {
+        const img = document.createElement("img");
+        const foundDino = found[i];
+        img.classList.add("found");
+        img.src = foundDino.src;
+        img.alt = foundDino.name;
+        console.log(foundDino.name)
+        foundItemsSection.appendChild(img);
+    }
+    if (foundItems.length === images.length) {
+        alert("Congratulations! You found them all! You are dino-mite!")
+    }
+}
+
 

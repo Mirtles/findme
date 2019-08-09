@@ -11,3 +11,8 @@ main {
 footer {
     height: 20vh;
 }
+
+.found {
+    max-height: 16vh;
+    max-width: 16vh;
+}
