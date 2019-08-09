@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My first palaeontology</title>
+    <title>Dinosaur hunter</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -12,11 +13,16 @@
 
     </main>
     <footer>
-        <h1>
-            items:
-        </h1>
-        <div id="foundItems">
-
+        <div class="foot">
+            <form onsubmit="addName();return false">
+                Enter your name:
+                <input type="text" id="name" name="playername">
+                <input type="submit" value="Submit">
+            </form>
+            <h1 id="items">
+            </h1>
+            <div id="foundItems">
+            </div>
         </div>
     </footer>
     <script src="index.js"></script>
