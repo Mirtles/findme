@@ -76,12 +76,20 @@ function displayInFooter(found) {
         img.classList.add("found");
         img.src = foundDino.src;
         img.alt = foundDino.name;
-        console.log(foundDino.name)
         foundItemsSection.appendChild(img);
     }
     if (foundItems.length === images.length) {
         alert("Congratulations! You found them all! You are dino-mite!")
     }
+}
+
+
+
+function addName() {
+    const input = document.getElementById("name")
+    const playerName = input.value
+    const h1 = document.getElementById("items");
+    h1.innerHTML = `${playerName}'s dinosaurs:`
 }
 
 

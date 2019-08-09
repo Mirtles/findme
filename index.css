@@ -1,5 +1,7 @@
 body {
     background-image: url("images/bg.png");
+    font-family: 'Lacquer', sans-serif;
+    font-size: 2em;
 }
 
 main {
@@ -10,9 +12,18 @@ main {
 
 footer {
     height: 20vh;
-}
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    }
 
 .found {
     max-height: 16vh;
     max-width: 16vh;
 }
+
+.foot {
+    padding: 2rem;
+}
+
+
